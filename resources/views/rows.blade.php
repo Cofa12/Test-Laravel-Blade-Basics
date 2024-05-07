@@ -22,7 +22,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($users as $user)
+                            @forelse ($users as $user)
                                 {{-- Task: only every second row should have "bg-red-100" --}}
                                 @if($loop->even)
                                     <tr class="bg-red-100">
@@ -37,7 +37,11 @@
                                     @endif
                                     <td>{{ $user->created_at }}</td>
                                 </tr>
-                            @endforeach
+                            @empty
+                                <tr>
+                                    <td colspan="4">No content.</td>
+                                </tr>
+                            @endforelse
                         </tbody>
                     </table>
                 </div>
