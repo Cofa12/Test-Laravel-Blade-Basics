@@ -1,17 +1,14 @@
 <x-app-layout>
-    <x-slot name ='$metaTitle'>
-        Users
-    </x-slot>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <h2 class="text-xl font-semibold leading-tight text-gray-800">
             {{ __('Users') }}
         </h2>
     </x-slot>
 
     <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200">
+        <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
+            <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
+                <div class="border-b border-gray-200 bg-white p-6">
                     <table>
                         <thead>
                             <tr>
@@ -22,19 +19,13 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse ($users as $user)
+                            @forelse ($users as $index => $user)
                                 {{-- Task: only every second row should have "bg-red-100" --}}
-                                @if($loop->even)
-                                    <tr class="bg-red-100">
-                                    @else
-                                    <tr>
-                                @endif
-                                    <td>{{$loop->iteration}}</td>
+                                <tr class="{{ $index % 2 == 0 ? 'bg-red-100' : '' }}">
+                                    <td>{{ $index + 1 }}</td>
                                     <td>{{ $user->name }}</td>
                                     {{-- Task: only the FIRST row should have email with "font-bold" --}}
-                                    @if($loop->first)
-                                        <td class="font-bold">{{ $user->email }}</td>
-                                    @endif
+                                    <td class="font-bold">{{ $user->email }}</td>
                                     <td>{{ $user->created_at }}</td>
                                 </tr>
                             @empty
