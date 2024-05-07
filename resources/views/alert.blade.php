@@ -1,5 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
+        <x-solt name ='$metaTitle'>Security alert Page </x-solt>
         <h2 class="text-xl font-semibold leading-tight text-gray-800">
             {{ __('Security alert') }}
         </h2>

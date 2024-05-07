@@ -1,4 +1,6 @@
 <x-app-layout>
+    <x-solt name ='$metaTitle'>Dashboard Page </x-solt>
+
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Dashboard') }}
